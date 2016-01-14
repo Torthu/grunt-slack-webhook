@@ -1,8 +1,8 @@
-# grunt-slack-webhook
+# grunt-slack-webhook-plus
 
 > Grunt plugin that can push messages to [slack](http://slack.com/) service using web hooks.
 
-__Note:__ This is a fork of the original [grunt-slack-hook](https://github.com/pwalczyszyn/grunt-slack-hook) by pwalczyszyn. It's working with the current version of Slack that uses webhook-urls instead of access tokens.
+__Note:__ This is a fork of [grunt-slack-webhook](https://github.com/kriskbx/grunt-slack-webhook) by kriskbx which is a fork of the original [grunt-slack-hook](https://github.com/pwalczyszyn/grunt-slack-hook) by pwalczyszyn. It's working with the current version of Slack that uses webhook-urls instead of access tokens.
 
 ## Getting Started
 This plugin requires Grunt `~0.4.2`
@@ -10,19 +10,21 @@ This plugin requires Grunt `~0.4.2`
 If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you're familiar with that process, you may install this plugin with this command:
 
 ```shell
-npm install grunt-slack-webhook --save-dev
+npm install grunt-slack-webhook-plus --save-dev
 ```
 
 Once the plugin has been installed, it may be enabled inside your Gruntfile with this line of JavaScript:
 
 ```js
-grunt.loadNpmTasks('grunt-slack-webhook');
+grunt.loadNpmTasks('grunt-slack-webhook-plus');
 ```
 
 ## The "plugin" task
 
 ### Overview
 In your project's Gruntfile, add a section named `plugin` to the data object passed into `grunt.initConfig()`.
+
+All options accepted by Slack is supported by the task.
 
 ```js
 grunt.initConfig({

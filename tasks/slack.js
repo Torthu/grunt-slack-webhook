@@ -1,5 +1,7 @@
 /* jshint node:true */
-var request = require('superagent');
+'use strict';
+var request = require('superagent'),
+    _ = require('lodash');
 
 module.exports = function (grunt) {
 
@@ -14,8 +16,13 @@ module.exports = function (grunt) {
             invalids.push('channel');
         }
         if (invalids.length > 0) {
-            grunt.log.error('grunt-slack-hook plugin is missing following options:', invalids.join(', '));
+            grunt.log.error('grunt-slack-webhook: plugin is missing following options:', invalids.join(', '));
             return false;
+        }
+
+        if(options.icon_emoji && options.icon_url) {
+            grunt.log.warn('grunt-slack-webhook: Both icon_emoji and icon_url defined. Will use icon_emoji.');
+            delete options.icon_url;
         }
 
         // We are good to go
@@ -23,18 +30,17 @@ module.exports = function (grunt) {
             message = grunt.option('message') || '',
             url = options.webhook,
             data = {
-                channel: options.channel,
                 text: this.data.text.replace('{{message}}', message)
             };
 
-        if (options.username) {
-            data.username = options.username;
-        }
-
-        if (options.icon_emoji) {
-            data.icon_emoji = options.icon_emoji;
-        } else if (options.icon_url) {
-            data.icon_url = options.icon_url;
+        for(key in options) {
+           switch (key) {
+                case 'webhook':
+                    break;
+                default:
+                    data[key] = options[key];
+                    break;
+            }
         }
 
         request.post(url).type('form').send('payload=' + JSON.stringify(data)).end(function (res) {
