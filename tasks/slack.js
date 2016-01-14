@@ -33,7 +33,7 @@ module.exports = function (grunt) {
                 text: this.data.text.replace('{{message}}', message)
             };
 
-        for(key in options) {
+        for(var key in options) {
            switch (key) {
                 case 'webhook':
                     break;

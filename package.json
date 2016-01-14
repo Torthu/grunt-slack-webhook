@@ -1,13 +1,9 @@
 {
   "name": "grunt-slack-webhook-plus",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Grunt plugin that can push messages to Slack using web hooks.",
   "main": "Gruntfile.js",
   "dependencies": {
-    "grunt": "^0.4.5",
-    "grunt-contrib-clean": "^0.4.1",
-    "grunt-contrib-jshint": "^0.6.5",
-    "grunt-contrib-nodeunit": "^0.2.2",
     "lodash": "^4.0.0",
     "superagent": "^0.15.7"
   },
